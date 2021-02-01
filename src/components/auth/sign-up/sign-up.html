@@ -1,0 +1,26 @@
+<v-card>
+  <v-form ref="form" v-model="isValid" lazy-validation>
+    <v-card-title>Sign up</v-card-title>
+    <v-card-text>
+      <v-row>
+        <v-col cols="12" class="px-1 pb-0">
+          <v-alert v-if="authResultError" type="error">{{ authResultError }}</v-alert>
+        </v-col>
+        <v-col cols="12" class="px-1 pb-0">
+          <v-text-field v-model="user.name" label="Name" :rules="[ validationRules.required ]" outlined />
+        </v-col>
+        <v-col cols="12" class="px-1 pb-0">
+          <v-text-field v-model="user.email" label="Email address" :rules="[ validationRules.required ]" outlined />
+        </v-col>
+        <v-col cols="12" class="px-1 pb-0">
+          <v-text-field v-model="password" label="Password" type="password" :rules="[ validationRules.required ]" outlined />
+        </v-col>
+      </v-row>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn color="primary" @click="signUp" dark block large>
+        Sign up
+      </v-btn>
+    </v-card-actions>
+  </v-form>
+</v-card>

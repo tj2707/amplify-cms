@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "amplifycmsadmin",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authamplifycms71e7529271e75292",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

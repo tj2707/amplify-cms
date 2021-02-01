@@ -1,0 +1,13 @@
+<v-card>
+  <v-form ref="form" v-model="isValid" lazy-validation>
+    <v-card-title>Create new item</v-card-title>
+    <v-card-text>
+      <content-item :item="contentItem" />
+    </v-card-text>
+    <v-card-actions>
+      <v-btn color="primary" @click="save" dark block large>
+        Save
+      </v-btn>
+    </v-card-actions>
+  </v-form>
+</v-card>

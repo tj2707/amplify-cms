@@ -1,0 +1,31 @@
+type ContentItem @model 
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] }
+    ]
+  ) {
+  id: ID!
+  path: String!
+  name: String
+  parent: String!
+  properties: [ContentItemProperty] @connection(keyName: "byItem", fields: ["id"])
+  children: [String]
+}
+
+type ContentItemProperty @model 
+  @key(
+    name: "byItem", 
+    fields: ["itemId"]
+  ) 
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] }
+    ]
+  ) {
+  id: ID!
+  type: String!
+  name: String!
+  value: String!
+  itemId: ID!
+  item: ContentItem @connection(fields: ["itemId"])
+}

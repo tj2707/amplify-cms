@@ -1,0 +1,31 @@
+<v-card>
+  <v-form ref="form" v-model="isValid" lazy-validation>
+    <v-card-title>Confirm sign up</v-card-title>
+    <v-card-text>
+      <v-row>
+        <v-col cols="12" class="px-1 pb-0">
+          <v-alert v-if="authResultError" type="error">{{ authResultError }}</v-alert>
+        </v-col>
+        <v-col v-if="showEmailField" cols="12" class="px-1 pb-0">
+          <v-text-field v-model="email" label="Email address" :rules="[ validationRules.required ]" outlined />
+        </v-col>
+        <v-col cols="12" class="px-1 pb-0">
+          <v-text-field v-model="code" label="Code" :rules="[ validationRules.required ]" outlined />
+        </v-col>
+      </v-row>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn color="primary" @click="confirm" dark block large>
+        Complete sign up
+      </v-btn>
+    </v-card-actions>
+    <v-card-actions>
+      <v-btn v-if="showResendCode" color="primary" @click="resendCode" text>
+        Resend code
+      </v-btn>
+      <div v-if="showResendCodeMessage">
+        Code has been resent.
+      </div>
+    </v-card-actions>
+  </v-form>
+</v-card>
